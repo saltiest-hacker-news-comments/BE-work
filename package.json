@@ -1,10 +1,12 @@
 {
-  "name": "BE-work",
+  "name": "backend-salty",
   "version": "1.0.0",
   "description": "This repo contain all backend work",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon index.js",
+    "test": "cross-env DB_ENV=testing jest --watch",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "helmet": "^3.21.1",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.19.4",
+    "pg": "^7.12.1",
     "sqlite3": "^4.1.0"
   },
   "devDependencies": {
