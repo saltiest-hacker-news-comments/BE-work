@@ -9,7 +9,10 @@ router.get('/list', (req, res) => {
       .then(users => {
         res.json(users);
       })
-      .catch(err => res.send(err));
+      .catch(err => {
+          console.log(err)
+          res.status(500).json({message: 'my bad server error'})
+      });
   });
 
   module.exports = router;
