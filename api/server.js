@@ -12,7 +12,7 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/api/auth', authRouter);
-server.use('api/users', authenticate, usersRouter)
+server.use('/api/users', authenticate, usersRouter)
 
 ///sanity check
 server.get('/', (req, res) => {
