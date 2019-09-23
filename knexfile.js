@@ -1,12 +1,11 @@
 // Update with your config settings.
 
 module.exports = {
-
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './database/salt.db3'
+      filename: './database/salt.db3',
     },
     pool: {
       afterCreate: (conn, done) => {
@@ -43,9 +42,8 @@ module.exports = {
       directory: './database/seeds',
     },
   },
-
-
-
- 
-
+  datascience: {
+    client: 'pg', // install this package
+    connection: process.env.DS_DATABASE_URL, // heroku sets this env variable
+  },
 };
