@@ -16,7 +16,7 @@ server.use('/api/users', authenticate, usersRouter)
 
 ///sanity check
 server.get('/', (req, res) => {
-    res.send('working in the servvver')
+    res.send('working in the salty hacker server')
 
 })
 
