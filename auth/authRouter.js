@@ -2,8 +2,18 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets');
+// const db = require('../database/dbDSConfig.js');
 
 const Users = require('../users/users-model');
+
+// router.get('/DS', (req, res) => {
+//   db('salt')
+//     .orderBy('saltiness', 'desc')
+//     .limit(15)
+//     .then(saved => {
+//       res.status(201).json(saved);
+//     });
+// });
 
 router.post('/register', (req, res) => {
   // implement registration
