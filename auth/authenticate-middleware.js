@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
         res.status(401).json({ you: 'shall not pass!' });
 
       } else {
-        req.user = {username: decodedToken.username}
+        req.user = {username: decodedToken.username, id: decodedToken.id}
         next()
       }
     })
