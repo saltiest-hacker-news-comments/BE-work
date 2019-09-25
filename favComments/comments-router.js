@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Trolls = require('./comments-model.js');
 const Users = require('../users/users-model.js');
 //retrieving 15 saltly comments from DS DB//
-router.get('/DS', (req, res) => {
+router.get('/topsalt', (req, res) => {
   Trolls.getTopSaltyComments()
     .then(comment => {
       res.status(200).json(comment);
@@ -59,7 +59,7 @@ router.get('/:id/fav/salts', validateUserId, (req, res) => {
     })
 
 //testing retrieving fav comments from DS with user id token//SUCCESS
-router.get('/allsalt', (req, res ) => {
+router.get('/allfavsalt', (req, res ) => {
   
    const id = req.user.id;
    Trolls.getCommentsByUserID(id)
