@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Trolls = require('./comments-model.js');
 const Users = require('../users/users-model.js');
-
+//retrieving 15 saltly comments from DS DB//
 router.get('/DS', (req, res) => {
   Trolls.getTopSaltyComments()
     .then(comment => {
@@ -11,7 +11,7 @@ router.get('/DS', (req, res) => {
       res.status(500).json({ message: 'Problem getting salty comments' });
     });
 });
-//get all the fav comments a user saves//not for production//for development purposes
+//get all the fav comment id's a user saves//not for production//for development purposes
 router.get('/:id/fav', validateUserId,(req, res) => {
   const id = req.params.id
   Trolls.getCommentsByUserID(id)
@@ -39,7 +39,7 @@ router.get('/favorites', (req,res)=> {
       .json({ message: 'Comments dont exist with that user_id' });
   });
 })
-//retrieve the favorite comments a user has saved from the data science db//
+//retrieve the favorite comments of a user where id is in req.params from DS db//
 router.get('/:id/fav/salts', validateUserId, (req, res) => {
   const id = req.params.id;
   Trolls.getCommentsByUserID(id)
@@ -57,8 +57,9 @@ router.get('/:id/fav/salts', validateUserId, (req, res) => {
       })
     })
 
-//testing retrieving fav comments from DS with user id token//
-router.get('/allsalt', (res, req) => {
+//testing retrieving fav comments from DS with user id token//FAILING
+router.get('/allsalt', (req, res ) => {
+  
    const id = req.user.id;
    Trolls.getCommentsByUserID(id)
     .then(saltyIDs => {
@@ -70,11 +71,11 @@ router.get('/allsalt', (res, req) => {
           })
       })
       .catch(err => {
-        console.log('error in second catch', err)
+        console.log( err)
         res.status(500).json({message: "user saved comments don't exist"})
       })
 })
-//testing delete with id from token//SUCCESS  
+//testing delete with  user id from token//SUCCESS  
 router.delete('/deletefav', (req, res)=> {
   const id = req.user.id
   const comment_id = parseInt(req.body.comment, 10);
@@ -88,7 +89,7 @@ router.delete('/deletefav', (req, res)=> {
     })
 })  
 
-//delete a favorite comment that has been saved
+//delete a favorite comment that has been saved where user id is in req.params
 router.delete('/:id/fav', validateUserId, (req, res)=> {
   const user_id = parseInt(req.params.id, 10)
   const comment_id = parseInt(req.body.comment, 10);
@@ -103,7 +104,7 @@ router.delete('/:id/fav', validateUserId, (req, res)=> {
     })
 })
 
-//add a favortite comment for a user
+//add a favortite comment for a user where user id is in req.parms
 router.post('/:id/fav', validateUserId, (req, res) => {
   const comment_id = parseInt(req.body.comment, 10);
   const user_id = parseInt(req.params.id, 10);
