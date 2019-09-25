@@ -55,7 +55,8 @@ function getTop25Saltiest() {
 function saltiestComment(id) {
   return dbDS('salt')
     .where({ 'salt.author': id })
-    .orderBy('score', 'asc');
+    .orderBy('score', 'asc')
+    .limit(10);
 }
 
 ///for new thing with token//removing
