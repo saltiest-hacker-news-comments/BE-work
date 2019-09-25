@@ -8,6 +8,7 @@ router.get('/DS', (req, res) => {
       res.status(200).json(comment);
     })
     .catch(error => {
+      console.log(error.message)
       res.status(500).json({ message: 'Problem getting salty comments' });
     });
 });
@@ -57,7 +58,7 @@ router.get('/:id/fav/salts', validateUserId, (req, res) => {
       })
     })
 
-//testing retrieving fav comments from DS with user id token//FAILING
+//testing retrieving fav comments from DS with user id token//SUCCESS
 router.get('/allsalt', (req, res ) => {
   
    const id = req.user.id;

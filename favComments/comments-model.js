@@ -13,7 +13,7 @@ module.exports = {
 
 function getTopSaltyComments() {
   return dbDS('salt')
-    .orderBy('saltiness', 'desc')
+    .orderBy('score', 'asc')
     .limit(15);
 }
 
