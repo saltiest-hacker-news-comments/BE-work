@@ -8,7 +8,9 @@ module.exports = {
   getCommentsByUserID,
   removeCommentByUserID,
   getSaltyCommentsByID,
-  removeComment 
+  removeComment,
+  getTop25Saltiest,
+  saltiestComment,
 };
 
 function getTopSaltyComments() {
@@ -17,7 +19,7 @@ function getTopSaltyComments() {
     .limit(15);
 }
 
-function getSaltyCommentsByID(commentIDs){
+function getSaltyCommentsByID(commentIDs) {
   return dbDS('salt').whereIn('id', commentIDs);
 }
 
@@ -29,16 +31,36 @@ function findBy(filter) {
   return db('favorite_comments').where(filter);
 }
 
-function getCommentsByUserID(id){
-  return db('favorite_comments').select('comment_id').where({"favorite_comments.user_id": id})
-
+function getCommentsByUserID(id) {
+  return db('favorite_comments')
+    .select('comment_id')
+    .where({ 'favorite_comments.user_id': id });
 }
 
-function removeCommentByUserID({user_id, comment_id}){
-     return getCommentsByUserID(user_id).where({comment_id}).del()
+function removeCommentByUserID({ user_id, comment_id }) {
+  return getCommentsByUserID(user_id)
+    .where({ comment_id })
+    .del();
+}
+
+function getTop25Saltiest() {
+  return dbDS('salt')
+    .select('author')
+    .avg('salt.score AS avg_score')
+    .groupBy('author')
+    .orderBy('avg_score', 'asc')
+    .limit(25);
+}
+
+function saltiestComment(id) {
+  return dbDS('salt')
+    .where({ 'salt.author': id })
+    .orderBy('score', 'asc');
 }
 
 ///for new thing with token//removing
-function removeComment(id ,comment_id){
-  return getCommentsByUserID(id).where({"favorite_comments.comment_id": comment_id}).del()
+function removeComment(id, comment_id) {
+  return getCommentsByUserID(id)
+    .where({ 'favorite_comments.comment_id': comment_id })
+    .del();
 }
