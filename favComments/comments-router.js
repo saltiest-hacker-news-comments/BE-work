@@ -82,10 +82,23 @@ router.delete('/deletefav', (req, res) => {
       res.status(200).json({ message: 'comment deleted' });
     })
     .catch(err => {
-      console.log(err.message);
-      res.status(500).json({ message: 'trouble deleting comment' });
-    });
-});
+      console.log(err.message)
+      res.status(500).json({message: 'trouble deleting comment'})
+    })
+})  
+router.delete('/:comment_id/deletefav', (req, res) => {
+  const id = req.user.id
+  const comment_id = parseInt(req.params.comment_id, 10);
+  Trolls.removeComment(id, comment_id)
+    .then(comments => {
+      res.status(200).json({message: 'comment deleted'})
+    })
+    .catch(err => {
+      console.log(err.message)
+      res.status(500).json({message: 'trouble deleting comment'})
+    })
+})
+
 
 //delete a favorite comment that has been saved where user id is in req.params
 router.delete('/:id/fav', validateUserId, (req, res) => {
