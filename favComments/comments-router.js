@@ -1,6 +1,20 @@
 const router = require('express').Router();
 const Trolls = require('./comments-model.js');
 const Users = require('../users/users-model.js');
+
+/**
+ * @api {get} /topsalt Get top 15 salty comments
+ * @apiName GetTop15saltyComments
+ * @apiGroup TopSalt
+ *
+ * @apiSuccess {Number} id Author id
+ * @apiSuccess {String} by Author by
+ * @apiSuccess {String} author Name author
+ * @apiSuccess {String} time Time
+ *
+ *
+ */
+
 //retrieving 15 saltly comments from DS DB//
 router.get('/topsalt', (req, res) => {
   Trolls.getTopSaltyComments()
@@ -75,7 +89,7 @@ router.get('/allfavsalt', (req, res) => {
 });
 //testing delete with  user id from token//SUCCESS
 router.delete('/deletefav', (req, res) => {
-  const id = req.user.id;
+  const id = req.body.id;
   const comment_id = parseInt(req.body.comment, 10);
   Trolls.removeComment(id, comment_id)
     .then(comments => {
