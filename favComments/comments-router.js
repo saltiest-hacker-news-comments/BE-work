@@ -163,7 +163,7 @@ router.delete('/deletefav', (req, res) => {
  *
  * @apiParam {Number} id Comment id
  *
- * @apiSuccess {String} message comment deleted
+ * @apiSuccess {String} message Comment deleted
  *
  *
  * @apiSuccessExample Successful Response:
@@ -566,30 +566,5 @@ function validateUserId(req, res, next) {
     }
   });
 }
-
-/**
- *
- * @api {post} /api/auth/login login as User
- * @apiName login
- * @apiGroup login
- *
- * @apiParam {String} username Users name
- * @apiParam {String} password Password
- *
- * @apiSuccess {Message} "Welcome user"
- * @apiSuccess {Token} token token
- *
- *
- * @apiSuccessExample Successful Response:
- * HTTP/1.1 200 OK
- * {
- * "message": "Welcome mariam!",
- * "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hcmlhbSIsImlkIjoxMCwiaWF0IjoxNTY5NTI5MjIwLCJleHAiOjE1Njk2MTU2MjB9.wxS04PV8VZYImc8E39B50CrnysBxbyDdA5C7uVgyqZA"
- *}
- *
- *
- * @apiError 401 Invalid Credentials
- *
- */
 
 module.exports = router;

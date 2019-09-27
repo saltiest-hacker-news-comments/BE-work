@@ -6,6 +6,32 @@ const secrets = require('../config/secrets');
 
 const Users = require('../users/users-model');
 
+/**
+ *
+ * @api {post} /api/auth/register Register a User
+ * @apiName Register
+ * @apiGroup Register
+ *
+ * @apiParam {String} username Users name
+ * @apiParam {String} password Password
+ *
+ * @apiSuccess {Number} id Users id
+ * @apiSuccess {String} username Users name
+ * @apiSuccess {String} password Password Bcrypted
+ *
+ * @apiSuccessExample Successful Response:
+ * HTTP/1.1 201 OK
+ *{
+ * "id": 4,
+ * "username": "test2",
+ * "password": "$2a$10$QIkv7M52OgZHY65za0W/rOSl3doj3pT0CuSidCGR0i.8MUhasRIkW"
+ *}
+ *
+ * @apiError 500 Error.message
+ *
+ *
+ */
+
 router.post('/register', (req, res) => {
   // implement registration
   let user = req.body;
@@ -20,6 +46,31 @@ router.post('/register', (req, res) => {
       res.status(500).json(error.message);
     });
 });
+
+/**
+ *
+ * @api {post} /api/auth/login login as User
+ * @apiName login
+ * @apiGroup login
+ *
+ * @apiParam {String} username Users name
+ * @apiParam {String} password Password
+ *
+ * @apiSuccess {String} message Welcome user
+ * @apiSuccess {String} token token
+ *
+ *
+ * @apiSuccessExample Successful Response:
+ * HTTP/1.1 200 OK
+ * {
+ * "message": "Welcome mariam!",
+ * "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hcmlhbSIsImlkIjoxMCwiaWF0IjoxNTY5NTI5MjIwLCJleHAiOjE1Njk2MTU2MjB9.wxS04PV8VZYImc8E39B50CrnysBxbyDdA5C7uVgyqZA"
+ *}
+ *
+ *
+ * @apiError 401 Invalid Credentials
+ *
+ */
 
 router.post('/login', (req, res) => {
   // implement login
