@@ -1,0 +1,599 @@
+define({ "api": [
+  {
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "varname1",
+            "description": "<p>No type.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "varname2",
+            "description": "<p>With type.</p>"
+          }
+        ]
+      }
+    },
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "./docs/main.js",
+    "group": "C__Users_Shawn_Documents_Web_Development_BuildWeek4_BE_work_docs_main_js",
+    "groupTitle": "C__Users_Shawn_Documents_Web_Development_BuildWeek4_BE_work_docs_main_js",
+    "name": ""
+  },
+  {
+    "type": "delete",
+    "url": "/api/comments/:comment_id/deletefav",
+    "title": "Delete 1 of users favorite comments",
+    "name": "DeleteFavoriteComment",
+    "group": "FavComments",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Comment id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Comment deleted</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 200 OK\n\n{\n\"message\": \"comment deleted\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Trouble deleting comment</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./favComments/comments-router.js",
+    "groupTitle": "FavComments"
+  },
+  {
+    "type": "post",
+    "url": "/api/comments/newfav",
+    "title": "Save a comment to Favorite list",
+    "name": "SaveFavoriteComment",
+    "group": "FavComments",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Comment id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Comment saved</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 200 OK\n\n{\n\"message\": \"comment successfully saved\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Error saving comment to the database</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./favComments/comments-router.js",
+    "groupTitle": "FavComments"
+  },
+  {
+    "type": "post",
+    "url": "/api/auth/register",
+    "title": "Register a User",
+    "name": "Register",
+    "group": "Register",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Users name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Users id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Users name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password Bcrypted</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 201 OK\n{\n\"id\": 4,\n\"username\": \"test2\",\n\"password\": \"$2a$10$QIkv7M52OgZHY65za0W/rOSl3doj3pT0CuSidCGR0i.8MUhasRIkW\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Error.message</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./auth/authRouter.js",
+    "groupTitle": "Register"
+  },
+  {
+    "type": "get",
+    "url": "/api/comments/topsalt",
+    "title": "Get top 15 salty comments",
+    "name": "GetTop15saltyComments",
+    "group": "Salt",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Author id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "by",
+            "description": "<p>Author by</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "author",
+            "description": "<p>Name author</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "time",
+            "description": "<p>Time</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ts",
+            "description": "<p>Time Stamp</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "parent",
+            "description": "<p>Parent Comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "score",
+            "description": "<p>Salt Score</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"id\": \"6972554\",\n   \"by\": \"aet\",\n  \"author\": \"aet\",\n  \"time\": \"1388177319\",\n  \"time_ts\": \"2013-12-27T20:48:39.000Z\",\n  \"text\": \"Fuck war, too? Right?\",\n  \"parent\": \"6972199\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -1.6249\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Problem getting salty comments.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./favComments/comments-router.js",
+    "groupTitle": "Salt"
+  },
+  {
+    "type": "get",
+    "url": "/api/comments/allfavsalt",
+    "title": "Get users favorite salty comments",
+    "name": "GetUsersFavoriteSaltyComments",
+    "group": "Salt",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Author id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "by",
+            "description": "<p>Author by</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "author",
+            "description": "<p>Name author</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "time",
+            "description": "<p>Time</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ts",
+            "description": "<p>Time Stamp</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "parent",
+            "description": "<p>Parent Comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "score",
+            "description": "<p>Salt Score</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 200 OK\n\n{\n  \"id\": \"6972554\",\n  \"by\": \"aet\",\n  \"author\": \"aet\",\n  \"time\": \"1388177319\",\n  \"time_ts\": \"2013-12-27T20:48:39.000Z\",\n  \"text\": \"Fuck war, too? Right?\",\n  \"parent\": \"6972199\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -1.6249\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>User saved comments don't exist.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./favComments/comments-router.js",
+    "groupTitle": "Salt"
+  },
+  {
+    "type": "get",
+    "url": "/api/comments/:id/saltiest",
+    "title": "Top 10 Saltiest comment by Author",
+    "name": "SaltiestOfTheSalt",
+    "group": "Salt",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "author",
+            "description": "<p>Authors name</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Author id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "by",
+            "description": "<p>Author by</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "author",
+            "description": "<p>Name author</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "time",
+            "description": "<p>Time</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "time_ts",
+            "description": "<p>Time Stamp</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "parent",
+            "description": "<p>Parent Comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "score",
+            "description": "<p>Salt Score</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 200 OK\n\n {\n  \"id\": \"5579500\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1366421699\",\n  \"time_ts\": \"2013-04-20T01:34:59.000Z\",\n  \"text\": \"If someone who happens to be Christian carries out terrorism, is this Christian terrorism? Or do we have a special exception for Muslims who carry out terrorism, that their terrorism is Islamic terrorism?\",\n  \"parent\": \"5579468\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -1.371\n},\n{\n  \"id\": \"7327336\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1393726174\",\n  \"time_ts\": \"2014-03-02T02:09:34.000Z\",\n  \"text\": \"I don&#x27;t speak for others but I would find Lua much more suitable than Javascript, for non-browser applications.<p>However, it&#x27;s ridiculous that I cannot easily just use Lua for browser applications!\",\n  \"parent\": \"7327210\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -0.9226\n},\n{\n  \"id\": \"8927022\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1421891068\",\n  \"time_ts\": \"2015-01-22T01:44:28.000Z\",\n  \"text\": \"The same reason Apple has consistently waged war against clones?\",\n  \"parent\": \"8926951\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -0.9014\n},\n{\n  \"id\": \"5438373\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1364233106\",\n  \"time_ts\": \"2013-03-25T17:38:26.000Z\",\n  \"text\": \"That is not an acceptable excuse for publicly saying that you wish women would not be in tech. It definitely doesn't make it any more rational to want to punish all women because you feel personally offended about the stupid actions of one person, which did not actually affect you in any way.<p>If this pattern of feeling irrational resentments and using them to justify inflammatory public behavior is \\\"just being honest\\\" then Adria Richards was also \\\"just being honest\\\".\",\n  \"parent\": \"5438352\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -0.7306\n},\n{\n  \"id\": \"7750051\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1400168259\",\n  \"time_ts\": \"2014-05-15T15:37:39.000Z\",\n  \"text\": \"HN uses this reasoning all the time. For example, &quot;I don&#x27;t know how to use language x, so language x sucks for sysadmins&quot; or &quot;I don&#x27;t know how to use language x, so it is too slow&quot;\",\n  \"parent\": \"7749652\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -0.4913\n},\n{\n  \"id\": \"9908292\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1437242358\",\n  \"time_ts\": \"2015-07-18T17:59:18.000Z\",\n  \"text\": \"So &quot;no cause&quot; works out to &quot;any cause, as long as you say no cause and didn&#x27;t leave obvious signs to the contrary&quot;\",\n  \"parent\": \"9907867\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -0.479\n},\n{\n  \"id\": \"5204187\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1360626060\",\n  \"time_ts\": \"2013-02-11T23:41:00.000Z\",\n  \"text\": \"The issue isn't how you felt, it is what kind of behavior you learned in the simulation context which would transfer to what you did on the real track. Doubtless your intimidation affected your behavior, but if a simulation can improve real performance then it is unlikely that a little intimidation completely erases all the tendencies learned in the simulation. It can't be assumed that things which improve performance will transfer, but things which could be dangerous won't transfer.\",\n  \"parent\": \"5204157\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -0.2483\n},\n{\n  \"id\": \"5100815\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1358904386\",\n  \"time_ts\": \"2013-01-23T01:26:26.000Z\",\n  \"text\": \"A $100-to-consumers, thoroughly hackable phone would be a bonanza for geeky hobbyists, feature phone users and Chinese companies selling to the developing world. Let's see if they can get prices down to where people will not think too much about how they'd rather have Android.\",\n  \"parent\": \"5097919\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -0.1901\n},\n{\n  \"id\": \"5490646\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1365043152\",\n  \"time_ts\": \"2013-04-04T02:39:12.000Z\",\n  \"text\": \"Why should it be scary? If you need someone to write some scripts in Perl, it should be just fine to use someone who mainly just knows Perl. Anyway, they can learn other stuff as they need to, once they know one language well, but you haven't made a case that this is actually necessary.\",\n  \"parent\": \"5490466\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": -0.0227\n},\n{\n  \"id\": \"7672079\",\n  \"by\": \"pekk\",\n  \"author\": \"pekk\",\n  \"time\": \"1398844388\",\n  \"time_ts\": \"2014-04-30T07:53:08.000Z\",\n  \"text\": \"After people learn something they don&#x27;t find it entirely cryptic any more, but that doesn&#x27;t mean it isn&#x27;t cryptic.<p>No evidence that using map instead of loops &quot;frees up brainpower.&quot;\",\n  \"parent\": \"7672013\",\n  \"deleted\": null,\n  \"dead\": null,\n  \"ranking\": \"0\",\n  \"score\": 0\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Error in getting users saltiness comment</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./favComments/comments-router.js",
+    "groupTitle": "Salt"
+  },
+  {
+    "type": "get",
+    "url": "/api/comments/salt",
+    "title": "Get a list of top 25 saltiest users",
+    "name": "Top25Saltiest",
+    "group": "Salt",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "author",
+            "description": "<p>Authors name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "avg_score",
+            "description": "<p>Authors score</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 200 OK\n\n{\n  \"author\": \"antonyh\",\n  \"avg_score\": -1.4708\n},\n{\n  \"author\": \"WWWade\",\n  \"avg_score\": -1.3318\n},\n{\n  \"author\": \"sadris\",\n  \"avg_score\": -1.3203\n},\n{\n  \"author\": \"NaNaN\",\n  \"avg_score\": -1.3038\n},\n{\n  \"author\": \"pokoleo\",\n  \"avg_score\": -1.3038\n},\n{\n  \"author\": \"rhygar\",\n  \"avg_score\": -1.2997\n},\n{\n  \"author\": \"finnn\",\n  \"avg_score\": -1.296\n},\n{\n  \"author\": \"r4vik\",\n  \"avg_score\": -1.296\n},\n{\n  \"author\": \"louhike\",\n  \"avg_score\": -1.2936\n},\n{\n  \"author\": \"wwosik\",\n  \"avg_score\": -1.2856\n},\n{\n  \"author\": \"esalman\",\n  \"avg_score\": -1.2774\n},\n{\n  \"author\": \"budu\",\n  \"avg_score\": -1.2774\n},\n{\n  \"author\": \"antris\",\n  \"avg_score\": -1.2708\n},\n{\n  \"author\": \"ramses\",\n  \"avg_score\": -1.2638\n},\n{\n  \"author\": \"minamea\",\n  \"avg_score\": -1.2513\n},\n{\n  \"author\": \"fwn\",\n  \"avg_score\": -1.23485\n},\n{\n  \"author\": \"fffggg\",\n  \"avg_score\": -1.2329\n},\n{\n  \"author\": \"casta\",\n  \"avg_score\": -1.2315\n},\n{\n  \"author\": \"hash9\",\n  \"avg_score\": -1.2311\n},\n{\n  \"author\": \"calvins\",\n  \"avg_score\": -1.2263\n},\n{\n  \"author\": \"josai\",\n  \"avg_score\": -1.2234\n},\n{\n  \"author\": \"dinergy\",\n  \"avg_score\": -1.2213\n},\n{\n  \"author\": \"alaloka\",\n  \"avg_score\": -1.2209\n},\n{\n  \"author\": \"ringe\",\n  \"avg_score\": -1.2125\n},\n{\n  \"author\": \"w00pla\",\n  \"avg_score\": -1.2051\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Error getting top 25 saltiness</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./favComments/comments-router.js",
+    "groupTitle": "Salt"
+  },
+  {
+    "type": "post",
+    "url": "/api/auth/login",
+    "title": "login as User",
+    "name": "login",
+    "group": "login",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Users name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Welcome user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>token</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 200 OK\n{\n\"message\": \"Welcome mariam!\",\n\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hcmlhbSIsImlkIjoxMCwiaWF0IjoxNTY5NTI5MjIwLCJleHAiOjE1Njk2MTU2MjB9.wxS04PV8VZYImc8E39B50CrnysBxbyDdA5C7uVgyqZA\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>Invalid Credentials</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./auth/authRouter.js",
+    "groupTitle": "login"
+  }
+] });

@@ -6,11 +6,11 @@
   "scripts": {
     "server": "nodemon index.js",
     "test": "cross-env NODE_ENV=testing jest --watch --verbose --runInBand",
-    "start": "node index.js"
+    "start": "node index.js",
+    "docs": "apidoc -f .js -i ./ -e node_modules -o ./docs"
   },
   "jest": {
     "testEnvironment": "node"
-
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/saltiest-hacker-news-comments/BE-work#readme",
   "dependencies": {
+    "apidoc": "^0.17.7",
     "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",

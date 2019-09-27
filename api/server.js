@@ -15,6 +15,7 @@ server.use(express.json());
 server.use('/api/auth', authRouter);
 server.use('/api/users', authenticate, usersRouter);
 server.use('/api/comments', authenticate, commentsRouter);
+server.use('/api/docs', express.static('./docs'));
 
 ///sanity check
 server.get('/', (req, res) => {
