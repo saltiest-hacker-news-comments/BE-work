@@ -6,15 +6,6 @@ const secrets = require('../config/secrets');
 
 const Users = require('../users/users-model');
 
-// router.get('/DS', (req, res) => {
-//   db('salt')
-//     .orderBy('saltiness', 'desc')
-//     .limit(15)
-//     .then(saved => {
-//       res.status(201).json(saved);
-//     });
-// });
-
 router.post('/register', (req, res) => {
   // implement registration
   let user = req.body;
@@ -54,7 +45,7 @@ router.post('/login', (req, res) => {
 function generateToken(user) {
   const payload = {
     username: user.username,
-    id: user.id
+    id: user.id,
   };
 
   const options = {
