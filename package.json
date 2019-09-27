@@ -7,7 +7,7 @@
     "server": "nodemon index.js",
     "test": "cross-env NODE_ENV=testing jest --watch --verbose --runInBand",
     "start": "node index.js",
-    "docs": "npx apidoc -i ./ -e node_modules -o ./docs"
+    "docs": "apidoc -f .js -i ./ -e node_modules -o ./docs"
   },
   "jest": {
     "testEnvironment": "node"
