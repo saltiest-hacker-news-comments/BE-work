@@ -54,7 +54,7 @@
             "type": "String",
             "optional": false,
             "field": "message",
-            "description": "<p>comment deleted</p>"
+            "description": "<p>Comment deleted</p>"
           }
         ]
       },
@@ -136,6 +136,82 @@
     "version": "0.0.0",
     "filename": "./favComments/comments-router.js",
     "groupTitle": "FavComments"
+  },
+  {
+    "type": "post",
+    "url": "/api/auth/register",
+    "title": "Register a User",
+    "name": "Register",
+    "group": "Register",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Users name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Users id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Users name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password Bcrypted</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 201 OK\n{\n\"id\": 4,\n\"username\": \"test2\",\n\"password\": \"$2a$10$QIkv7M52OgZHY65za0W/rOSl3doj3pT0CuSidCGR0i.8MUhasRIkW\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "500",
+            "description": "<p>Error.message</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./auth/authRouter.js",
+    "groupTitle": "Register"
   },
   {
     "type": "get",
@@ -450,5 +526,74 @@
     "version": "0.0.0",
     "filename": "./favComments/comments-router.js",
     "groupTitle": "Salt"
+  },
+  {
+    "type": "post",
+    "url": "/api/auth/login",
+    "title": "login as User",
+    "name": "login",
+    "group": "login",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>Users name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Welcome user</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>token</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Successful Response:",
+          "content": "HTTP/1.1 200 OK\n{\n\"message\": \"Welcome mariam!\",\n\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hcmlhbSIsImlkIjoxMCwiaWF0IjoxNTY5NTI5MjIwLCJleHAiOjE1Njk2MTU2MjB9.wxS04PV8VZYImc8E39B50CrnysBxbyDdA5C7uVgyqZA\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>Invalid Credentials</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./auth/authRouter.js",
+    "groupTitle": "login"
   }
 ]
